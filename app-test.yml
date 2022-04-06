@@ -1,0 +1,39 @@
+---
+version: "2.0"
+
+services:
+  node-web-app:
+    image: cleik/node-web-app
+    expose:
+      - port: 8080
+        as: 80
+        to:
+          - global: true
+
+profiles:
+  compute:
+    node-web-app:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 256Mi
+        storage:
+          size: 256Mi
+  placement:
+    akash:
+      attributes:
+        host: akash
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
+      pricing:
+        node-web-app: 
+          denom: uakt
+          amount: 100
+
+deployment:
+  node-web-app:
+    akash:
+      profile: node-web-app
+      count: 1
