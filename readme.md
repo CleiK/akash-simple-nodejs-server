@@ -22,8 +22,10 @@ curl -i localhost:49160
 
 ### Publish docker image
 
-image name: cleik/node-web-app
-repo: cleik/test-repo
+Create a docker hub account, create a public repo, then publish you image:
+
+- image name: cleik/node-web-app
+- repo: cleik/test-repo
 
 ```
 docker tag cleik/node-web-app cleik/test-repo
@@ -32,5 +34,8 @@ docker push cleik/test-repo
 
 ## Deploy on Akash
 
-- configure app-test.yml
+
+- setup a wallet (keplr for example) with just more than 5 akt token
+- configure app-test.yml with your akash network address
 - use akashlytics deploy tool
+- deploy and accept a bid (current config cost around 1.32$/month but you need to lock 5 akt)
